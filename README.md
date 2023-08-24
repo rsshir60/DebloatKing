@@ -1,4 +1,4 @@
-# DebloatKing
+# DeBloatKing 🔥👑
 "Introducing Debloat King – Your Ultimate Bloatware Removal Solution!
 
 Tired of clutter and sluggishness caused by unnecessary system apps? Say goodbye to bloatware that hampers your device's performance. With Debloat King, you're in control! Our powerful tool empowers you to effortlessly remove useless system apps from various brands like Samsung, Poco, iQoo, Mi, Pixel, and more.
