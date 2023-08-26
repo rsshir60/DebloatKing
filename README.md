@@ -29,7 +29,7 @@
 1. Fire up your Command Prompt or Terminal.
 2. Use cd to navigate to the script's folder.
 
-### Let the Magic Begin 🪄
+### Let the Magic Begin 💣💛
 
 1. Type the script's filename and press Enter.
 2. The script checks for your connected device and prompts you for bloatware removal.
