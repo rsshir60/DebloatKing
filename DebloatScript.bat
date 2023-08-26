@@ -12,7 +12,7 @@ for %%a in (%APPS%) do (
     adb shell pm list packages | findstr /i "%%a" > nul
     if %errorlevel%==0 (
         REM App is installed, attempt to uninstall
-        adb shell pm uninstall --user 0 "%%a"
+        adb shell pm uninstall -k --user -0 "%%a"
         
         REM Check the exit status of the uninstall command
         if %errorlevel%==0 (
