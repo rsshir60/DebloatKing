@@ -1,30 +1,46 @@
 @echo off
 
-REM List of package names for the apps you want to remove
-set "APPS=com.facebook.katana com.instagram.android com.google.android.apps.maps net.one97.paytm"
+echo Welcome To DeBloatKing...
 
-REM Variable to keep track of the number of apps removed
-set "removed_count=0"
+echo Checking for connected ADB devices...
+adb devices
 
-REM Loop through the list of apps and uninstall each one
-for %%a in (%APPS%) do (
-    REM Check if the app is installed before attempting to uninstall
-    adb shell pm list packages | findstr /i "%%a" > nul
-    if %errorlevel%==0 (
-        REM App is installed, attempt to uninstall
-        adb shell pm uninstall -k --user -0 "%%a"
-        
-        REM Check the exit status of the uninstall command
-        if %errorlevel%==0 (
-            echo Uninstalled: %%a
-            set /a "removed_count+=1"
-        ) else (
-            echo Unable to uninstall: %%a
-        )
-    ) else (
-        echo %%a is not present on the device
-    )
+rem List of apps to uninstall
+set "apps_to_uninstall="
+set "apps_to_uninstall=%apps_to_uninstall% com.vishal2376.gitcoach
+"
+set "apps_to_uninstall=%apps_to_uninstall% ml.docilealligator.infinityforreddit"
+
+rem Add more package names if needed
+
+set /a "total_uninstalled=0"
+set "start_time=%time%"
+
+for %%a in (%apps_to_uninstall%) do (
+    echo Uninstalling %%a...
+    adb shell pm uninstall -k --user 0 %%a
+    set /a "total_uninstalled+=1"
 )
 
-echo Bloatware removal complete!
-echo Total apps removed: %removed_count%
+set "end_time=%time%"
+
+echo Total %total_uninstalled% apps uninstalled.
+echo Started at: %start_time%
+echo Finished at: %end_time%
+
+rem Calculate time difference
+for /f "tokens=1-4 delims=:." %%a in ("%start_time%") do (
+    set /a "start_seconds=(((%%a*60)+1%%b %% 100)*60)+1%%c %% 100"
+)
+for /f "tokens=1-4 delims=:." %%a in ("%end_time%") do (
+    set /a "end_seconds=(((%%a*60)+1%%b %% 100)*60)+1%%c %% 100"
+)
+
+set /a "elapsed_seconds=%end_seconds%-%start_seconds%"
+set /a "elapsed_minutes=%elapsed_seconds% / 60"
+set /a "remaining_seconds=%elapsed_seconds% %% 60"
+
+echo Elapsed time: %elapsed_minutes% minutes and %remaining_seconds% seconds
+
+echo Thank you for using the script!
+pause
