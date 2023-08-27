@@ -5,26 +5,42 @@ echo Welcome To DeBloatKing...
 echo Checking for connected ADB devices...
 adb devices
 
-rem List of apps to uninstall
-set "apps_to_uninstall="
-set "apps_to_uninstall=%apps_to_uninstall% com.vishal2376.gitcoach
-"
-set "apps_to_uninstall=%apps_to_uninstall% ml.docilealligator.infinityforreddit"
+echo Select the bloatware category to uninstall:
+echo 1. MI Bloatware
+echo 2. Samsung Bloatware
+echo 3. Vivo Bloatware
+echo 4. Realme Bloatware
+echo 5. OnePlus Bloatware
 
-rem Add more package names if needed
+set /p "choice=Enter your choice: "
+
+rem Define arrays for bloatware apps
+setlocal enabledelayedexpansion
+set "bloatware="
+if "%choice%"=="1" set "bloatware= com.mi.global.bbs com.mi.global.shop com.miui.analytics com.miui.bugreport com.miui.cleanmaster"
+if "%choice%"=="2" set "bloatware= com.samsung.android.calendar com.samsung.android.email.provider com.samsung.android.game.gamehome"
+if "%choice%"=="3" set "bloatware= com.vivo.easyshare com.vivo.smartmultiwindow com.vivo.vivospace"
+if "%choice%"=="4" set "bloatware= com.realme.community com.coloros.soundrecorder com.facebook.appmanager"
+if "%choice%"=="5" set "bloatware= com.oneplus.brickmode com.oneplus.account com.oneplus.community"
+
+if not defined bloatware (
+    echo Invalid choice.
+    pause
+    exit /b
+)
 
 set /a "total_uninstalled=0"
 set "start_time=%time%"
 
-for %%a in (%apps_to_uninstall%) do (
-    echo Uninstalling %%a...
-    adb shell pm uninstall -k --user 0 %%a
+for %%b in (%bloatware%) do (
+    echo Uninstalling %%b...
+    adb shell pm uninstall -k --user 0 %%b
     set /a "total_uninstalled+=1"
 )
 
 set "end_time=%time%"
 
-echo Total %total_uninstalled% apps uninstalled.
+echo Total %total_uninstalled% bloatware apps uninstalled.
 echo Started at: %start_time%
 echo Finished at: %end_time%
 
