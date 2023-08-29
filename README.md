@@ -53,4 +53,5 @@ Remember, your actions are your responsibility. We're not liable for any device 
 !Download Now (https://example.com/download_button.png)
 
 *Your choice to use this script supports the open-source movement. Join us! 🌐*
+
 https://raw.githubusercontent.com/happy05dz/Batch-Script-Collection/master/_images/banner.gif
