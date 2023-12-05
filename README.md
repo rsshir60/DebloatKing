@@ -50,6 +50,6 @@ Remember, your actions are your responsibility. We're not liable for any device 
 
 ### Unleash Your Device's Potential Now! 🚀
 
-!Download Now (https://example.com/download_button.png)
+!Download Now (https://github.com/rsshir60/DebloatKing.git)
 
 *Your choice to use this script supports the open-source movement. Join us! 🌐*
